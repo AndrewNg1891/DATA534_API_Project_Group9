@@ -9,7 +9,9 @@
 #' @param token (Optional) GitHub access token for authentication and increasing rate limit.
 #' @return Raw response
 github_api <- function(path,per_page,page,username = "",token = "") {
-    
+    # some code in this helper function learned from https://httr.r-lib.org/articles/api-packages.html (the link in the project requirement document)
+
+    # validate inputs
     if(!is.numeric(per_page)){
         stop("The per_page parameter should not be non-numerical value")
     }
@@ -26,16 +28,20 @@ github_api <- function(path,per_page,page,username = "",token = "") {
         stop("The page parameter should be a positive integer", call. = FALSE)
     }
     
+    # setup query part
     query <- list(per_page=per_page,page=page)
     
+    # setup url link
     url <- httr::modify_url("https://api.github.com", path = path)
+
+    # send request with/without authentication
     if (username == "" || token == "") {
         response <- httr::GET(url, httr::add_headers(accept = "application/vnd.github.v3+json"), query = query)
     } else {
         response <- httr::GET(url, httr::add_headers(accept = "application/vnd.github.v3+json"), query = query, httr::authenticate(username, token))
     }
     
-    
+    # check response
     if (httr::http_error(response)) {
         stop("GitHub API request failed", call. = FALSE)
     }
@@ -56,6 +62,8 @@ github_api <- function(path,per_page,page,username = "",token = "") {
 #' @return Formatted response.
 format_response <- function(response,output_type) {
     result <- NULL
+
+    # convert response to user needed type. (raw for flexiblity)
     if (output_type == "list") {
         result <- jsonlite::fromJSON(rawToChar(response$content), simplifyVector = FALSE)
     } else if (output_type == "dataframe") {
@@ -182,12 +190,18 @@ github_get_repo_events <- function(owner, repo, per_page=30, page=1, output_type
 #' @return The dataframe that contains the retrieved events data.
 #' @export
 github_lastn_events_df <- function(range, max_event_num, owner = "", repo = "", organization = "",username = "",token = ""){
+    
+    # validate inputs
     if (max_event_num < 1 || max_event_num != round(max_event_num)) {
         stop("The max_event_num parameter should be a positive integer", call. = FALSE)
     }
+
+    # calculate how many pages do we need. (set per_page = 100 to minimize request number)
     total_pages <- ceiling(max_event_num/100)
     result <- NULL
     datalist = list()
+
+    # send request to retrieve data on each page and store them to a list.
     for (i in 1:total_pages){
         if (range == "all public") {
             temp_df <- github_get_public_events(100, page=i,"dataframe",username,token)
@@ -215,6 +229,8 @@ github_lastn_events_df <- function(range, max_event_num, owner = "", repo = "", 
         }
         temp_df <- temp_df[,c("id","type","created_at", "actor.login", "repo.name")]
     }
+
+    # combine data in the list to a single dataframe.
     binded_df <- dplyr::bind_rows(datalist)
     row_num <- min(c(nrow(binded_df),max_event_num))
     binded_df <- binded_df[1:row_num,]
@@ -239,6 +255,7 @@ github_lastn_events_df <- function(range, max_event_num, owner = "", repo = "", 
 github_count_events_bytype <- function(range, max_event_num, owner = "", repo = "", organization = "",username = "",token = ""){
    
     binded_df <- github_lastn_events_df(range,max_event_num,owner,repo,organization,username,token)
+    # gourp by type and count records for each type
     result <- binded_df |> dplyr::count(type, name = "count")
     result
     
@@ -255,21 +272,31 @@ github_count_events_bytype <- function(range, max_event_num, owner = "", repo = 
 #' @param repo (Optional) GitHub repository name.
 #' @param organization (Optional) GitHub organization name.
 #' @param event_type (Optional) The event type to count (default will count all types events).
+#' @param return_type (Optional) Indicate return dataframe or plot (default: dataframe).
 #' @param username (Optional) GitHub username for authentication and increasing rate limit.
 #' @param token (Optional) GitHub access token for authentication and increasing rate limit.
-#' @return The dataframe that contains the count information.
+#' @return The dataframe/plot that contains the count information.
 #' @export
-github_count_events_bydate <- function(range, max_event_num, owner = "", repo = "", organization = "", event_type = "all",username = "",token = ""){
+github_count_events_bydate <- function(range, max_event_num, owner = "", repo = "", organization = "", event_type = "all", return_type = "dataframe",username = "",token = ""){
    
     
     binded_df <- github_lastn_events_df(range,max_event_num,owner,repo,organization,username,token)
+    # wrangling data (add date column and filter data by type)
     if (event_type == "all") {
         binded_df <- binded_df |> dplyr::mutate(date = lubridate::ymd(as.POSIXlt(created_at)))
     } else {
         binded_df <- binded_df |> dplyr::filter(type == event_type) |> dplyr::mutate(date = lubridate::ymd(as.POSIXlt(created_at)))
     }
+    # gourp by date and count records for each date
+    counted_df <- binded_df |> dplyr::count(date, name = "count")
     
-    result <- binded_df |> dplyr::count(date, name = "count")
+    if (return_type == "plot") {
+        # plot line chart, because it has better visualization.
+        result <- ggplot2::ggplot(counted_df, ggplot2::aes(x = date, y = count)) + ggplot2::geom_line() 
+    } else {
+        result <- counted_df
+    }
+    
     result
     
 }
@@ -294,19 +321,50 @@ github_count_events_byweekday <- function(range, max_event_num, owner = "", repo
    
     
     binded_df <- github_lastn_events_df(range,max_event_num,owner,repo,organization,username,token)
+    
+    # wrangling data (add weekdays column and filter data by type)
     if (event_type == "all") {
         binded_df <- binded_df |> dplyr::mutate(weekdays = lubridate::wday(lubridate::ymd(as.POSIXlt(created_at)),label=TRUE))
     } else {
         binded_df <- binded_df |> dplyr::filter(type == event_type) |> dplyr::mutate(weekdays = lubridate::wday(lubridate::ymd(as.POSIXlt(created_at)),label=TRUE))
     }
     
+    # gourp by weekdays and count records for each weekdays
     counted_df <- binded_df |> dplyr::count(weekdays, name = "count")
     
     if (return_type == "plot") {
+        # plot bar chart, because it has better visualization
         result <- ggplot2::ggplot(counted_df, ggplot2::aes(x = weekdays, y = count)) + ggplot2::geom_bar(stat="identity") 
     } else {
         result <- counted_df
     }
     
     result
+}
+
+
+#' Get rate limit of API
+#'
+#' This function gets rate limit information.
+#'
+#' @param username (Optional) GitHub username for authentication and increasing rate limit.
+#' @param token (Optional) GitHub access token for authentication and increasing rate limit.
+#' @return The string shows how much requests remaining based on limit.
+#' @export
+api_rate_limit <- function(username = "",token = "") {
+    # some code in this helper function learned from https://httr.r-lib.org/articles/api-packages.html (the link in the project requirement document)
+    if (username == "" || token == "") {
+        response <- httr::GET("https://api.github.com/rate_limit")
+    } else {
+        response <- response <- httr::GET("https://api.github.com/rate_limit", httr::authenticate(username, token))
+    }
+    
+    response_list <- format_response(response,"list")
+
+    # rate limit information is stored in core variable
+    core <- response_list$resources$core
+    
+    reset <- as.POSIXct(core$reset, origin = "1970-01-01")
+    cat(core$remaining, " remaining / ", core$limit, " limit (Resets at ", strftime(reset, "%H:%M:%S"), ")\n", sep = "")
+
 }

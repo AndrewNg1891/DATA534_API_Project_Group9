@@ -11,6 +11,7 @@ github_count_events_bydate(
   repo = "",
   organization = "",
   event_type = "all",
+  return_type = "dataframe",
   username = "",
   token = ""
 )
@@ -28,12 +29,14 @@ github_count_events_bydate(
 
 \item{event_type}{(Optional) The event type to count (default will count all types events).}
 
+\item{return_type}{(Optional) Indicate return dataframe or plot (default: dataframe).}
+
 \item{username}{(Optional) GitHub username for authentication and increasing rate limit.}
 
 \item{token}{(Optional) GitHub access token for authentication and increasing rate limit.}
 }
 \value{
-The dataframe that contains the count information.
+The dataframe/plot that contains the count information.
 }
 \description{
 This function counts the number of events by date for a certain range and type.
