@@ -1,8 +1,13 @@
 library(wrappedgithubactivityapi)
 library(testthat)
 
+<<<<<<< HEAD
 username = "AndrewNg1891"
 token = "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"
+=======
+username = ""
+token = ""
+>>>>>>> 1f685d63895e686cc3b7ed78fc566cc69f1f1261
 
 test_that("test_github_api returns list.",{
   expect_equal(typeof(github_api("/events",30,1,username=username,token=token)), "list")
