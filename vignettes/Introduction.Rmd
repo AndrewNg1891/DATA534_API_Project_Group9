@@ -17,3 +17,174 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(wrappedgithubactivityapi)
 ```
+
+The `wrappedgithubactivityapi` package wrapped a part of the [GitHub Activity APIs](https://docs.github.com/en/rest/reference/activity) for helping user to retrieve public / repository network / organization / repository events (activities). The package also provided some analysis conveniences by its statistical functionality and plot functionality.
+
+In order to balance its flexibility and convenience, functions are designed to "3 levels".
+
+## 1st Level - Data Retrieve Functions
+
+User can use these functions to get all the information in the response with a user selected format, and make further analysis. These functions for providing the flexibility to user.
+
+### Get Public Events
+
+The `github_get_public_events` function will retrieve public events data and return the data in user selected format.
+
+For example, user can retrieve the first page of public events with 10 event records per page:
+
+
+```{r, results='hide'}
+github_get_public_events(per_page=10, page=1)
+```
+
+The output is hidden, because the each public event record may contain too many key-value pairs to display. 
+
+User can use the optional parameter `output_type` to indicate output formatting type (Possible value: "list","dataframe","character","raw") (default: "list").
+
+
+### Get Organization Events
+
+The `github_get_organization_events` function will retrieve organization events data and return the data in user selected format.
+
+For example, user can retrieve the first page of organization events with 1 events records per page in "dataframe" output format:
+
+
+```{r}
+github_get_organization_events("ubco-mds-2021",1,1,output_type = "dataframe")
+```
+
+User can use the optional parameter `output_type` to indicate output formatting type (Possible value: "list","dataframe","character","raw") (default: "list").
+
+
+
+### Get Repository Network Events
+
+The `github_get_network_events` function will retrieve repository network events data and return the data in user selected format.
+
+For example, user can retrieve the first page of repository network events with 1 events records per page in "dataframe" output format:
+
+
+```{r}
+github_get_network_events("AndrewNg1891","DATA534_API_Project_Group9",per_page=1,page=1,output_type = "character")
+```
+
+User can use the optional parameter `output_type` to indicate output formatting type (Possible value: "list","dataframe","character","raw") (default: "list").
+
+
+
+### Get Repository Events
+
+The `github_get_repo_events` function will retrieve repository events data and return the data in user selected format.
+
+For example, user can retrieve the first page of repository events with 1 events records per page in "dataframe" output format:
+
+
+```{r}
+github_get_repo_events("AndrewNg1891","DATA534_API_Project_Group9",per_page=1,page=1,output_type = "dataframe")
+```
+
+User can use the optional parameter `output_type` to indicate output formatting type (Possible value: "list","dataframe","character","raw") (default: "list").
+
+
+## 2nd Level - Data Select Function
+
+The function in this part wrapped functions in the 1st level, and can handle the paginate problem for user. User can use this function to get last n events data without worry about how many records per page and which page to retrieve.
+
+This function for providing some convenience to user.
+
+### Get last n events
+
+The `github_lastn_events_df` function will retrieve last n events data of a certain range (Possible value: "all public"/"network"/"organization"/"repository") and return the dataframe that contains the retrieved events data.of a certain range . The information in the response was selected on 5 most important things. 
+
+
+For example, user can retrieve the last 15 events from organization "ubco-mds-2021":
+
+
+```{r}
+github_lastn_events_df("organization",15,organization="ubco-mds-2021")
+```
+
+For another example, user can retrieve the last 5 events from repository "DATA534_API_Project_Group9" with its owner name "AndrewNg1891":
+
+
+```{r}
+github_lastn_events_df("repository",15,owner="AndrewNg1891",repo="DATA534_API_Project_Group9")
+```
+
+## 3rd Level - Data Analysis Function
+
+Functions in this part wrapped the function in the 2nd level, and preform some analysis for user. User can use these function to count and/or plot last n events data with a certain group condition.
+
+These functions for providing some convenience to user.
+
+### Count Events by Type
+
+The `github_count_events_bytype` function will count the number of events by type for a certain range.
+
+
+For example, user can count the number of events by type on last 20 events from repository "DATA534_API_Project_Group9" with its owner name "AndrewNg1891":
+
+
+```{r}
+github_count_events_bytype("repository",20,"AndrewNg1891","DATA534_API_Project_Group9")
+```
+
+### Count Events by Date
+
+The `github_count_events_bydate` function will count the number of events by date for a certain range and type.
+
+
+For example, user can count the number of "WatchEvent" type events by date on last 100 events from repository "WestHealth" with its owner name "pyvis":
+
+
+```{r}
+github_count_events_bydate("repository",100,"WestHealth","pyvis",event_type = "WatchEvent")
+```
+
+
+This function also provides visualization ability. For getting the plot, just need to set parameter `return_type = "plot"`, then the function will plot a bar chart base on the counted events data:
+
+```{r}
+github_count_events_bydate("repository",100,"WestHealth","pyvis",event_type = "WatchEvent",return_type = "plot")
+```
+
+
+### Count Events by Weekday
+
+The `github_count_events_byweekday` function will count the number of events by weekdays for a certain range and type.
+
+
+For example, user can count the number of events by date on last 100 events from repository "WestHealth" with its owner name "pyvis":
+
+
+```{r}
+github_count_events_byweekday("repository",100,"WestHealth","pyvis")
+```
+
+
+This function also provides visualization ability. For getting the plot, just need to set parameter `return_type = "plot"`, then the function will plot a bar chart base on the counted events data:
+
+```{r}
+github_count_events_byweekday("repository",100,"WestHealth","pyvis",return_type = "plot")
+```
+
+
+## Note - Rate Limit
+
+The GitHub has rate limit on its activity API, which allows only 60 requests for unauthenticated user. However, this limit can be increased to 5000 for authenticated user. 
+
+All functions in this package allows user input optional parameters `username` and `token` for authentication. 
+
+The function `api_rate_limit` can be used to get rate limit information:
+
+
+```{r}
+api_rate_limit()
+```
+
+
+
+
+
+
+
