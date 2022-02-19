@@ -16,6 +16,9 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(wrappedgithubactivityapi)
+# The new created GitHub account and token for CI testing 
+username = ""
+token = ""
 ```
 
 The `wrappedgithubactivityapi` package wrapped a part of the [GitHub Activity APIs](https://docs.github.com/en/rest/reference/activity) for helping user to retrieve public / repository network / organization / repository events (activities). The package also provided some analysis conveniences by its statistical functionality and plot functionality.
@@ -34,7 +37,7 @@ For example, user can retrieve the first page of public events with 10 event rec
 
 
 ```{r, results='hide'}
-github_get_public_events(per_page=10, page=1)
+github_get_public_events(per_page=10, page=1,username=username,token=token)
 ```
 
 The output is hidden, because the each public event record may contain too many key-value pairs to display. 
@@ -50,7 +53,7 @@ For example, user can retrieve the first page of organization events with 1 even
 
 
 ```{r}
-github_get_organization_events("ubco-mds-2021",1,1,output_type = "dataframe")
+github_get_organization_events("ubco-mds-2021",1,1,output_type = "dataframe",username=username,token=token)
 ```
 
 User can use the optional parameter `output_type` to indicate output formatting type (Possible value: "list","dataframe","character","raw") (default: "list").
@@ -65,7 +68,7 @@ For example, user can retrieve the first page of repository network events with 
 
 
 ```{r}
-github_get_network_events("AndrewNg1891","DATA534_API_Project_Group9",per_page=1,page=1,output_type = "character")
+github_get_network_events("AndrewNg1891","DATA534_API_Project_Group9",per_page=1,page=1,output_type = "character",username=username,token=token)
 ```
 
 User can use the optional parameter `output_type` to indicate output formatting type (Possible value: "list","dataframe","character","raw") (default: "list").
@@ -80,7 +83,7 @@ For example, user can retrieve the first page of repository events with 1 events
 
 
 ```{r}
-github_get_repo_events("AndrewNg1891","DATA534_API_Project_Group9",per_page=1,page=1,output_type = "dataframe")
+github_get_repo_events("AndrewNg1891","DATA534_API_Project_Group9",per_page=1,page=1,output_type = "dataframe",username=username,token=token)
 ```
 
 User can use the optional parameter `output_type` to indicate output formatting type (Possible value: "list","dataframe","character","raw") (default: "list").
@@ -101,14 +104,14 @@ For example, user can retrieve the last 15 events from organization "ubco-mds-20
 
 
 ```{r}
-github_lastn_events_df("organization",15,organization="ubco-mds-2021")
+github_lastn_events_df("organization",15,organization="ubco-mds-2021",username=username,token=token)
 ```
 
 For another example, user can retrieve the last 5 events from repository "DATA534_API_Project_Group9" with its owner name "AndrewNg1891":
 
 
 ```{r}
-github_lastn_events_df("repository",15,owner="AndrewNg1891",repo="DATA534_API_Project_Group9")
+github_lastn_events_df("repository",15,owner="AndrewNg1891",repo="DATA534_API_Project_Group9",username=username,token=token)
 ```
 
 ## 3rd Level - Data Analysis Function
@@ -126,7 +129,7 @@ For example, user can count the number of events by type on last 20 events from 
 
 
 ```{r}
-github_count_events_bytype("repository",20,"AndrewNg1891","DATA534_API_Project_Group9")
+github_count_events_bytype("repository",20,"AndrewNg1891","DATA534_API_Project_Group9",username=username,token=token)
 ```
 
 ### Count Events by Date
@@ -138,14 +141,14 @@ For example, user can count the number of "WatchEvent" type events by date on la
 
 
 ```{r}
-github_count_events_bydate("repository",100,"WestHealth","pyvis",event_type = "WatchEvent")
+github_count_events_bydate("repository",100,"WestHealth","pyvis",event_type = "WatchEvent",username=username,token=token)
 ```
 
 
 This function also provides visualization ability. For getting the plot, just need to set parameter `return_type = "plot"`, then the function will plot a bar chart base on the counted events data:
 
 ```{r}
-github_count_events_bydate("repository",100,"WestHealth","pyvis",event_type = "WatchEvent",return_type = "plot")
+github_count_events_bydate("repository",100,"WestHealth","pyvis",event_type = "WatchEvent",return_type = "plot",username=username,token=token)
 ```
 
 
@@ -158,14 +161,14 @@ For example, user can count the number of events by date on last 100 events from
 
 
 ```{r}
-github_count_events_byweekday("repository",100,"WestHealth","pyvis")
+github_count_events_byweekday("repository",100,"WestHealth","pyvis",username=username,token=token)
 ```
 
 
 This function also provides visualization ability. For getting the plot, just need to set parameter `return_type = "plot"`, then the function will plot a bar chart base on the counted events data:
 
 ```{r}
-github_count_events_byweekday("repository",100,"WestHealth","pyvis",return_type = "plot")
+github_count_events_byweekday("repository",100,"WestHealth","pyvis",return_type = "plot",username=username,token=token)
 ```
 
 
@@ -179,7 +182,7 @@ The function `api_rate_limit` can be used to get rate limit information:
 
 
 ```{r}
-api_rate_limit()
+api_rate_limit(username=username,token=token)
 ```
 
 
