@@ -55,7 +55,7 @@ test_that('test_count_events_bytype returns correct column.', {
 })
 
 test_that('test_github_lastn_events_df returns correct number of colmun.', {
-  expect_length(github_lastn_events_df("organization",102,organization="ubco-mds-2021"), 143)
+  expect_length(github_lastn_events_df("organization",102,organization="ubco-mds-2021"), 5)
 })
 
 test_that('test_github_lastn_events_df returns list.',{
