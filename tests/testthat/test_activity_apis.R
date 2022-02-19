@@ -2,8 +2,8 @@ library(wrappedgithubactivityapi)
 library(testthat)
 
 <<<<<<< HEAD
-username = "AndrewNg1891"
-token = "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"
+username = "andrewng891"
+token = "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"
 =======
 username = ""
 token = ""
