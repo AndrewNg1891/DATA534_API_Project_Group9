@@ -16,9 +16,10 @@ All team members agree to the Feature Branch workflow, and the following convent
 3. After the remote feature branch had been pushed successfully, the member should send a pull request for merging their updated feature to the main branch (if it was approved by other group’s members.)
 4. When conflicts happened during merging, the team member should attempt checking their work to solve within their reasonable time first. If it could not be resolved, they should seek for help from other members on time to avoid any delays.
 
-## How to contribute to our project?
+## Are you interested to contribute to our project?
 
-If you want to contribute to a project and make it better, your help is very welcome. Contributing is also a great way to learn more. Please feel free to send us a good, clean pull request, we highly appreciate it. Please note that we use R language, so please follow [tidyverse style guidelines](https://style.tidyverse.org/).
+Our package is used to help users to check login activities in certain API such as GitHub as well as serving  higher level purposes such as analysis, for example, helping users allocate appropriate resources for maintenance. Recognizing that for the community, your contributions to us are very important.
+If you would like to contribute to a project and make it better, your help is very welcome. Contributing is also a great way to learn more. Please feel free to send us a good, clean pull request, we highly appreciate it. Please note that we use R language, so please follow [tidyverse style guidelines](https://style.tidyverse.org/).
 
 ### How to make a clean pull request
 
