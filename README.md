@@ -25,39 +25,39 @@ To install the package via [CRAN](https://cran.r-project.org/), please the follo
 
 `github_get_public_events()`
 
-    The function will retrieve public events data and return the data in user selected format.
+The function will retrieve public events data and return the data in user selected format.
 
 `github_get_organization_events()`
 
-    The function will retrieve organization events data and return the data in user selected format.
+The function will retrieve organization events data and return the data in user selected format.
 
 `github_get_network_events()`
 
-    The function will retrieve repository network events data and return the data in user selected format.
+The function will retrieve repository network events data and return the data in user selected format.
 
 `github_get_repo_events()`
 
-    The function will retrieve repository events data and return the data in user selected format.
+The function will retrieve repository events data and return the data in user selected format.
 
 `github_lastn_events_df()`
 
-    The function will retrieve last n events data of a certain range (Possible value: "all public"/"network"/"organization"/"repository") and return the dataframe that contains the retrieved events data.of a certain range . The information in the response was selected on 5 most important things. 
+The function will retrieve last n events data of a certain range (Possible value: "all public"/"network"/"organization"/"repository") and return the dataframe that contains the retrieved events data.of a certain range . The information in the response was selected on 5 most important things. 
 
 `github_count_events_bytype()`
 
-    The function will count the number of events by type for a certain range.
+The function will count the number of events by type for a certain range.
 
 `github_count_events_bydate()`
 
-    The function will count the number of events by date for a certain range and type.
+The function will count the number of events by date for a certain range and type.
 
 `github_count_events_byweekday()`
 
-    The function will count the number of events by weekdays for a certain range and type.
+The function will count the number of events by weekdays for a certain range and type.
 
 `api_rate_limit()`
 
-    The function can be used to get rate limit information
+The function can be used to get rate limit information
 
 ## Usage Example
 
