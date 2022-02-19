@@ -26,6 +26,10 @@ test_that("test_get_public returns list.",{
   expect_equal(typeof(github_get_public_events()), "list")
 })
 
+test_that("test_get_public detect invaild input.",{
+  expect_error(github_api("/events", "aaa"), "The per_page parameter should not be non-numerical value")
+})
+
 test_that("test_get_public returns correct length list.",{
   expect_length(github_get_public_events(), 30)
 })
