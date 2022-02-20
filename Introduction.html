@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+
+<title>Introduction</title>
+
+<script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
+// be compatible with the behavior of Pandoc < 2.8).
+document.addEventListener('DOMContentLoaded', function(e) {
+  var hs = document.querySelectorAll("div.section[class*='level'] > :first-child");
+  var i, h, a;
+  for (i = 0; i < hs.length; i++) {
+    h = hs[i];
+    if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
+    a = h.attributes;
+    while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; } 
+code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction</h1>
+
+
+
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(wrappedgithubactivityapi)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The new created GitHub account and token for CI testing </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#username = &quot;&quot;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#token = &quot;&quot;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>token <span class="ot">&lt;-</span> <span class="fu">Sys.getenv</span>(<span class="st">&#39;GITHUB_PAT&#39;</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(token <span class="sc">==</span> <span class="st">&quot;&quot;</span>){</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  username <span class="ot">&lt;-</span> <span class="st">&quot;&quot;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  username <span class="ot">&lt;-</span> <span class="st">&quot;vignette&quot;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>The <code>wrappedgithubactivityapi</code> package wrapped a part of the <a href="https://docs.github.com/en/rest/reference/activity">GitHub Activity APIs</a> for helping user to retrieve public / repository network / organization / repository events (activities). The package also provided some analysis conveniences by its statistical functionality and plot functionality.</p>
+<p>In order to balance its flexibility and convenience, functions are designed to “3 levels”.</p>
+<div id="st-level---data-retrieve-functions" class="section level2">
+<h2>1st Level - Data Retrieve Functions</h2>
+<p>User can use these functions to get all the information in the response with a user selected format, and make further analysis. These functions for providing the flexibility to user.</p>
+<div id="get-public-events" class="section level3">
+<h3>Get Public Events</h3>
+<p>The <code>github_get_public_events</code> function will retrieve public events data and return the data in user selected format.</p>
+<p>For example, user can retrieve the first page of public events with 10 event records per page:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">github_get_public_events</span>(<span class="at">per_page=</span><span class="dv">10</span>, <span class="at">page=</span><span class="dv">1</span>,<span class="at">username=</span>username,<span class="at">token=</span>token)</span></code></pre></div>
+<p>The output is hidden, because the each public event record may contain too many key-value pairs to display.</p>
+<p>User can use the optional parameter <code>output_type</code> to indicate output formatting type (Possible value: “list”,“dataframe”,“character”,“raw”) (default: “list”).</p>
+</div>
+<div id="get-organization-events" class="section level3">
+<h3>Get Organization Events</h3>
+<p>The <code>github_get_organization_events</code> function will retrieve organization events data and return the data in user selected format.</p>
+<p>For example, user can retrieve the first page of organization events with 1 events records per page in “dataframe” output format:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">github_get_organization_events</span>(<span class="st">&quot;ubco-mds-2021&quot;</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="at">output_type =</span> <span class="st">&quot;dataframe&quot;</span>,<span class="at">username=</span>username,<span class="at">token=</span>token)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            id      type public           created_at actor.id actor.login</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 20299739483 PushEvent   TRUE 2022-02-16T23:40:54Z 45440434     jufil19</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   actor.display_login actor.gravatar_id                            actor.url</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1             jufil19                   https://api.github.com/users/jufil19</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                    actor.avatar_url   repo.id</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 https://avatars.githubusercontent.com/u/45440434? 460214386</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                           repo.name</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 ubco-mds-2021/551-project-group-e</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                         repo.url</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 https://api.github.com/repos/ubco-mds-2021/551-project-group-e</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   payload.push_id payload.size payload.distinct_size     payload.ref</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      9123403481            1                     1 refs/heads/main</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                               payload.head</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 ddf78807d9893adf71c6558581461a54c4a27620</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                             payload.before</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 ff7a8a074e5013030ebc5eaa38f82e52a01fc5da</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                                                                                                                                                                                      payload.commits</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 ddf78807d9893adf71c6558581461a54c4a27620, team contract, TRUE, https://api.github.com/repos/ubco-mds-2021/551-project-group-e/commits/ddf78807d9893adf71c6558581461a54c4a27620, 45440434+jufil19@users.noreply.github.com, jufil19</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     org.id     org.login org.gravatar_id</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 87037946 ubco-mds-2021                </span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                     org.url</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 https://api.github.com/orgs/ubco-mds-2021</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                      org.avatar_url</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 https://avatars.githubusercontent.com/u/87037946?</span></span></code></pre></div>
+<p>User can use the optional parameter <code>output_type</code> to indicate output formatting type (Possible value: “list”,“dataframe”,“character”,“raw”) (default: “list”).</p>
+</div>
+<div id="get-repository-network-events" class="section level3">
+<h3>Get Repository Network Events</h3>
+<p>The <code>github_get_network_events</code> function will retrieve repository network events data and return the data in user selected format.</p>
+<p>For example, user can retrieve the first page of repository network events with 1 events records per page in “dataframe” output format:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">github_get_network_events</span>(<span class="st">&quot;AndrewNg1891&quot;</span>,<span class="st">&quot;DATA534_API_Project_Group9&quot;</span>,<span class="at">per_page=</span><span class="dv">1</span>,<span class="at">page=</span><span class="dv">1</span>,<span class="at">output_type =</span> <span class="st">&quot;character&quot;</span>,<span class="at">username=</span>username,<span class="at">token=</span>token)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;[\n  {\n    \&quot;id\&quot;: \&quot;20356103224\&quot;,\n    \&quot;type\&quot;: \&quot;PushEvent\&quot;,\n    \&quot;actor\&quot;: {\n      \&quot;id\&quot;: 63891386,\n      \&quot;login\&quot;: \&quot;AndrewNg1891\&quot;,\n      \&quot;display_login\&quot;: \&quot;AndrewNg1891\&quot;,\n      \&quot;gravatar_id\&quot;: \&quot;\&quot;,\n      \&quot;url\&quot;: \&quot;https://api.github.com/users/AndrewNg1891\&quot;,\n      \&quot;avatar_url\&quot;: \&quot;https://avatars.githubusercontent.com/u/63891386?\&quot;\n    },\n    \&quot;repo\&quot;: {\n      \&quot;id\&quot;: 458703204,\n      \&quot;name\&quot;: \&quot;AndrewNg1891/DATA534_API_Project_Group9\&quot;,\n      \&quot;url\&quot;: \&quot;https://api.github.com/repos/AndrewNg1891/DATA534_API_Project_Group9\&quot;\n    },\n    \&quot;payload\&quot;: {\n      \&quot;push_id\&quot;: 9151107533,\n      \&quot;size\&quot;: 1,\n      \&quot;distinct_size\&quot;: 1,\n      \&quot;ref\&quot;: \&quot;refs/heads/CI_testing\&quot;,\n      \&quot;head\&quot;: \&quot;ac5b3903d487a98adc7d6dafe39320d56c2004ce\&quot;,\n      \&quot;before\&quot;: \&quot;e20b923e593422194f61b95799c488b3a53a2c23\&quot;,\n      \&quot;commits\&quot;: [\n        {\n          \&quot;sha\&quot;: \&quot;ac5b3903d487a98adc7d6dafe39320d56c2004ce\&quot;,\n          \&quot;author\&quot;: {\n            \&quot;email\&quot;: \&quot;andrewng1891@gmail.com\&quot;,\n            \&quot;name\&quot;: \&quot;Andrew Ng\&quot;\n          },\n          \&quot;message\&quot;: \&quot;try some changes\&quot;,\n          \&quot;distinct\&quot;: true,\n          \&quot;url\&quot;: \&quot;https://api.github.com/repos/AndrewNg1891/DATA534_API_Project_Group9/commits/ac5b3903d487a98adc7d6dafe39320d56c2004ce\&quot;\n        }\n      ]\n    },\n    \&quot;public\&quot;: true,\n    \&quot;created_at\&quot;: \&quot;2022-02-20T00:40:51Z\&quot;\n  }\n]\n&quot;</span></span></code></pre></div>
+<p>User can use the optional parameter <code>output_type</code> to indicate output formatting type (Possible value: “list”,“dataframe”,“character”,“raw”) (default: “list”).</p>
+</div>
+<div id="get-repository-events" class="section level3">
+<h3>Get Repository Events</h3>
+<p>The <code>github_get_repo_events</code> function will retrieve repository events data and return the data in user selected format.</p>
+<p>For example, user can retrieve the first page of repository events with 1 events records per page in “dataframe” output format:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">github_get_repo_events</span>(<span class="st">&quot;AndrewNg1891&quot;</span>,<span class="st">&quot;DATA534_API_Project_Group9&quot;</span>,<span class="at">per_page=</span><span class="dv">1</span>,<span class="at">page=</span><span class="dv">1</span>,<span class="at">output_type =</span> <span class="st">&quot;dataframe&quot;</span>,<span class="at">username=</span>username,<span class="at">token=</span>token)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            id      type public           created_at actor.id  actor.login</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 20356103224 PushEvent   TRUE 2022-02-20T00:40:51Z 63891386 AndrewNg1891</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   actor.display_login actor.gravatar_id</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        AndrewNg1891                  </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                   actor.url</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 https://api.github.com/users/AndrewNg1891</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                    actor.avatar_url   repo.id</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 https://avatars.githubusercontent.com/u/63891386? 458703204</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                 repo.name</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                               repo.url</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 https://api.github.com/repos/AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   payload.push_id payload.size payload.distinct_size           payload.ref</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      9151107533            1                     1 refs/heads/CI_testing</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                               payload.head</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 ac5b3903d487a98adc7d6dafe39320d56c2004ce</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                             payload.before</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 e20b923e593422194f61b95799c488b3a53a2c23</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                                                                                                                                                                                              payload.commits</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 ac5b3903d487a98adc7d6dafe39320d56c2004ce, try some changes, TRUE, https://api.github.com/repos/AndrewNg1891/DATA534_API_Project_Group9/commits/ac5b3903d487a98adc7d6dafe39320d56c2004ce, andrewng1891@gmail.com, Andrew Ng</span></span></code></pre></div>
+<p>User can use the optional parameter <code>output_type</code> to indicate output formatting type (Possible value: “list”,“dataframe”,“character”,“raw”) (default: “list”).</p>
+</div>
+</div>
+<div id="nd-level---data-select-function" class="section level2">
+<h2>2nd Level - Data Select Function</h2>
+<p>The function in this part wrapped functions in the 1st level, and can handle the paginate problem for user. User can use this function to get last n events data without worry about how many records per page and which page to retrieve.</p>
+<p>This function for providing some convenience to user.</p>
+<div id="get-last-n-events" class="section level3">
+<h3>Get last n events</h3>
+<p>The <code>github_lastn_events_df</code> function will retrieve last n events data of a certain range (Possible value: “all public”/“network”/“organization”/“repository”) and return the dataframe that contains the retrieved events data.of a certain range . The information in the response was selected on 5 most important things.</p>
+<p>For example, user can retrieve the last 15 events from organization “ubco-mds-2021”:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">github_lastn_events_df</span>(<span class="st">&quot;organization&quot;</span>,<span class="dv">15</span>,<span class="at">organization=</span><span class="st">&quot;ubco-mds-2021&quot;</span>,<span class="at">username=</span>username,<span class="at">token=</span>token)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            id        type           created_at   actor.login</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 20299739483   PushEvent 2022-02-16T23:40:54Z       jufil19</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 20299705563 MemberEvent 2022-02-16T23:37:27Z    evelynsugi</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 20299701865 MemberEvent 2022-02-16T23:37:07Z    evelynsugi</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 20299696260 CreateEvent 2022-02-16T23:36:36Z    evelynsugi</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 20299696094 CreateEvent 2022-02-16T23:36:35Z    evelynsugi</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 19484563386   ForkEvent 2021-12-26T04:35:45Z     Mehul2203</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7 19270284330 MemberEvent 2021-12-10T03:52:26Z ubco-mds-2021</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8 19070639555 MemberEvent 2021-11-26T22:05:10Z ubco-mds-2021</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                           repo.name</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 ubco-mds-2021/551-project-group-e</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 ubco-mds-2021/551-project-group-e</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 ubco-mds-2021/551-project-group-e</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 ubco-mds-2021/551-project-group-e</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 ubco-mds-2021/551-project-group-e</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  ubco-mds-2021/Lab3-Val-Can-Tests</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  ubco-mds-2021/Lab3-Val-Can-Tests</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8        ubco-mds-2021/DATA533_Lab2</span></span></code></pre></div>
+<p>For another example, user can retrieve the last 5 events from repository “DATA534_API_Project_Group9” with its owner name “AndrewNg1891”:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">github_lastn_events_df</span>(<span class="st">&quot;repository&quot;</span>,<span class="dv">15</span>,<span class="at">owner=</span><span class="st">&quot;AndrewNg1891&quot;</span>,<span class="at">repo=</span><span class="st">&quot;DATA534_API_Project_Group9&quot;</span>,<span class="at">username=</span>username,<span class="at">token=</span>token)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;             id             type           created_at  actor.login</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  20356103224        PushEvent 2022-02-20T00:40:51Z AndrewNg1891</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  20356014276        PushEvent 2022-02-20T00:19:00Z AndrewNg1891</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  20355948824        PushEvent 2022-02-20T00:04:04Z AndrewNg1891</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  20355837254        PushEvent 2022-02-19T23:34:42Z AndrewNg1891</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  20355749379        PushEvent 2022-02-19T23:12:04Z AndrewNg1891</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  20355532330        PushEvent 2022-02-19T22:19:25Z   boweny0319</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  20355532302 PullRequestEvent 2022-02-19T22:19:24Z   boweny0319</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  20355531728 PullRequestEvent 2022-02-19T22:19:15Z   boweny0319</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  20355529707        PushEvent 2022-02-19T22:18:45Z   boweny0319</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 20355399084        PushEvent 2022-02-19T21:48:21Z AndrewNg1891</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 20355271254        PushEvent 2022-02-19T21:20:17Z   boweny0319</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 20355271217 PullRequestEvent 2022-02-19T21:20:16Z   boweny0319</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 20355270635 PullRequestEvent 2022-02-19T21:20:10Z   boweny0319</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 20355268505        PushEvent 2022-02-19T21:19:44Z   boweny0319</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 20355001964        PushEvent 2022-02-19T20:24:22Z AndrewNg1891</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                                  repo.name</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 AndrewNg1891/DATA534_API_Project_Group9</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 AndrewNg1891/DATA534_API_Project_Group9</span></span></code></pre></div>
+</div>
+</div>
+<div id="rd-level---data-analysis-function" class="section level2">
+<h2>3rd Level - Data Analysis Function</h2>
+<p>Functions in this part wrapped the function in the 2nd level, and preform some analysis for user. User can use these function to count and/or plot last n events data with a certain group condition.</p>
+<p>These functions for providing some convenience to user.</p>
+<div id="count-events-by-type" class="section level3">
+<h3>Count Events by Type</h3>
+<p>The <code>github_count_events_bytype</code> function will count the number of events by type for a certain range.</p>
+<p>For example, user can count the number of events by type on last 20 events from repository “DATA534_API_Project_Group9” with its owner name “AndrewNg1891”:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">github_count_events_bytype</span>(<span class="st">&quot;repository&quot;</span>,<span class="dv">20</span>,<span class="st">&quot;AndrewNg1891&quot;</span>,<span class="st">&quot;DATA534_API_Project_Group9&quot;</span>,<span class="at">username=</span>username,<span class="at">token=</span>token)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               type count</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      CreateEvent     1</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 PullRequestEvent     4</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3        PushEvent    15</span></span></code></pre></div>
+</div>
+<div id="count-events-by-date" class="section level3">
+<h3>Count Events by Date</h3>
+<p>The <code>github_count_events_bydate</code> function will count the number of events by date for a certain range and type.</p>
+<p>For example, user can count the number of “WatchEvent” type events by date on last 100 events from repository “WestHealth” with its owner name “pyvis”:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">github_count_events_bydate</span>(<span class="st">&quot;repository&quot;</span>,<span class="dv">100</span>,<span class="st">&quot;WestHealth&quot;</span>,<span class="st">&quot;pyvis&quot;</span>,<span class="at">event_type =</span> <span class="st">&quot;WatchEvent&quot;</span>,<span class="at">username=</span>username,<span class="at">token=</span>token)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          date count</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  2021-12-04     3</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  2021-12-08     1</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  2021-12-09     1</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  2021-12-10     2</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  2021-12-11     1</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6  2021-12-15     1</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7  2021-12-17     1</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8  2021-12-20     1</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9  2021-12-21     3</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 2021-12-22     1</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11 2021-12-25     1</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12 2021-12-28     2</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13 2022-01-05     1</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14 2022-01-06     1</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 2022-01-07     1</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16 2022-01-08     1</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 17 2022-01-10     1</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 18 2022-01-17     1</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 19 2022-01-19     1</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 20 2022-01-20     1</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 21 2022-01-21     1</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 22 2022-01-22     1</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 23 2022-01-28     2</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 24 2022-01-29     1</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 25 2022-01-30     1</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 26 2022-01-31     1</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 27 2022-02-01     1</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28 2022-02-04     1</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 29 2022-02-08     1</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 30 2022-02-10     2</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 31 2022-02-17     1</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 32 2022-02-18     1</span></span></code></pre></div>
+<p>This function also provides visualization ability. For getting the plot, just need to set parameter <code>return_type = &quot;plot&quot;</code>, then the function will plot a bar chart base on the counted events data:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">github_count_events_bydate</span>(<span class="st">&quot;repository&quot;</span>,<span class="dv">100</span>,<span class="st">&quot;WestHealth&quot;</span>,<span class="st">&quot;pyvis&quot;</span>,<span class="at">event_type =</span> <span class="st">&quot;WatchEvent&quot;</span>,<span class="at">return_type =</span> <span class="st">&quot;plot&quot;</span>,<span class="at">username=</span>username,<span class="at">token=</span>token)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="count-events-by-weekday" class="section level3">
+<h3>Count Events by Weekday</h3>
+<p>The <code>github_count_events_byweekday</code> function will count the number of events by weekdays for a certain range and type.</p>
+<p>For example, user can count the number of events by date on last 100 events from repository “WestHealth” with its owner name “pyvis”:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">github_count_events_byweekday</span>(<span class="st">&quot;repository&quot;</span>,<span class="dv">100</span>,<span class="st">&quot;WestHealth&quot;</span>,<span class="st">&quot;pyvis&quot;</span>,<span class="at">username=</span>username,<span class="at">token=</span>token)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   weekdays count</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      Sun     3</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      Mon    10</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      Tue    19</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      Wed    20</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      Thu    18</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6      Fri    21</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7      Sat     9</span></span></code></pre></div>
+<p>This function also provides visualization ability. For getting the plot, just need to set parameter <code>return_type = &quot;plot&quot;</code>, then the function will plot a bar chart base on the counted events data:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">github_count_events_byweekday</span>(<span class="st">&quot;repository&quot;</span>,<span class="dv">100</span>,<span class="st">&quot;WestHealth&quot;</span>,<span class="st">&quot;pyvis&quot;</span>,<span class="at">return_type =</span> <span class="st">&quot;plot&quot;</span>,<span class="at">username=</span>username,<span class="at">token=</span>token)</span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+</div>
+<div id="note---rate-limit" class="section level2">
+<h2>Note - Rate Limit</h2>
+<p>The GitHub has rate limit on its activity API, which allows only 60 requests for unauthenticated user. However, this limit can be increased to 5000 for authenticated user.</p>
+<p>All functions in this package allows user input optional parameters <code>username</code> and <code>token</code> for authentication.</p>
+<p>The function <code>api_rate_limit</code> can be used to get rate limit information:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">api_rate_limit</span>(<span class="at">username=</span>username,<span class="at">token=</span>token)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 49 remaining / 60 limit (Resets at 18:08:07)</span></span></code></pre></div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
