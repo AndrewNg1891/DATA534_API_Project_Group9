@@ -22,10 +22,6 @@ To import the package in R, please use the following code after installation :
     library(wrappedgithubactivityapi)
 
 
-To install the package via [CRAN](https://cran.r-project.org/), please the following commands :
-
-    install.packages("wrappedgithubactivityapi")
-    library(wrappedgithubactivityapi)
 
 ## Function List
 
