@@ -10,15 +10,13 @@ Authors@R:
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
-Depends:
-    R (>= 4.0)
-Imports:
-    httr,
-    jsonlite,
-    ggplot2,
-    glue,
-    dplyr,
-    openssl
+LazyData: TRUE
+RoxygenNote: 7.1.2
+Depends: R (>= 3.4.0)
+Imports: httr (>= 1.4.0),
+         lubridate, 
+         jsonlite, 
+         dplyr (>= 0.8.0)
 Suggests: 
     rmarkdown,
     knitr,
