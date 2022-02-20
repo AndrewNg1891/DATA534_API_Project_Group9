@@ -15,7 +15,8 @@ RoxygenNote: 7.1.2
 Depends: R (>= 3.4.0)
 Imports: httr (>= 1.4.0),
          lubridate, 
-         jsonlite, 
+         jsonlite,
+         ggplot2,
          dplyr (>= 0.8.0)
 Suggests: 
     rmarkdown,
