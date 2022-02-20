@@ -2,16 +2,20 @@
 
 ## Overview
 
+
 The `wrappedgithubactivityapi` package wrapped a part of the [GitHub Activity APIs](https://docs.github.com/en/rest/reference/activity) for helping user to retrieve public / repository network / organization / repository events (activities). The package also provided some statistical analysis and plot functionality.
 
 ## Installation Instruction
 
 To install the package from Github, please use the following code :
 
+
     install.packages("devtools")
     devtools::install_github("AndrewNg1891/DATA534_API_Project_Group9")
 
+
 To import the package in R, please use the following code after installation :
+
 
     library(wrappedgithubactivityapi)
 

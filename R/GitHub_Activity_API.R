@@ -223,11 +223,12 @@ github_lastn_events_df <- function(range, max_event_num, owner = "", repo = "", 
         }
         
         if (length(temp_df) > 0) {
+            temp_df <- temp_df[,c("id","type","created_at", "actor.login", "repo.name")]
             datalist[[i]] <- temp_df
         } else {
             break
         }
-        temp_df <- temp_df[,c("id","type","created_at", "actor.login", "repo.name")]
+        
     }
 
     # combine data in the list to a single dataframe.
