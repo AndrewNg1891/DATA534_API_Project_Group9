@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 library(wrappedgithubactivityapi)
 # The new created GitHub account and token for CI testing 
 username = "andrewng891"
-token = "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"
+token = "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"
 ```
 
 The `wrappedgithubactivityapi` package wrapped a part of the [GitHub Activity APIs](https://docs.github.com/en/rest/reference/activity) for helping user to retrieve public / repository network / organization / repository events (activities). The package also provided some analysis conveniences by its statistical functionality and plot functionality.
