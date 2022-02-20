@@ -1,5 +1,7 @@
 # wrappedgithubactivityapi
 
+[![R-CI-check](https://github.com/AndrewNg1891/DATA534_API_Project_Group9/actions/workflows/R-CI-check.yaml/badge.svg?branch=CI_testing)](https://github.com/AndrewNg1891/DATA534_API_Project_Group9/actions/workflows/R-CI-check.yaml)
+
 ## Overview
 
 The `wrappedgithubactivityapi` package wrapped a part of the [GitHub Activity APIs](https://docs.github.com/en/rest/reference/activity) for helping user to retrieve public / repository network / organization / repository events (activities). The package also provided some analysis conveniences by its statistical functionality and plot functionality.
