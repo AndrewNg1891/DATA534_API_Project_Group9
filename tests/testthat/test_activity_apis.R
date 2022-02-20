@@ -1,8 +1,13 @@
 library(wrappedgithubactivityapi)
 library(testthat)
 
-username = ""
-token = ""
+token <- Sys.getenv('GITHUB_PAT')
+if(token == ""){
+  username <- ""
+} else {
+  username <- "test"
+}
+
 
 test_that("test_github_api returns list.",{
   expect_equal(typeof(github_api("/events",30,1,username=username,token=token)), "list")

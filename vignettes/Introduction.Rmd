@@ -17,8 +17,13 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(wrappedgithubactivityapi)
 # The new created GitHub account and token for CI testing 
-username = ""
-token = ""
+token <- Sys.getenv('GITHUB_PAT')
+if(token == ""){
+  username <- ""
+} else {
+  username <- "vignette"
+}
+
 ```
 
 
