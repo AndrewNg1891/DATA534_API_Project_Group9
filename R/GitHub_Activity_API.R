@@ -257,7 +257,7 @@ github_count_events_bytype <- function(range, max_event_num, owner = "", repo = 
    
     binded_df <- github_lastn_events_df(range,max_event_num,owner,repo,organization,username,token)
     # gourp by type and count records for each type
-    result <- binded_df |> dplyr::count(type, name = "count")
+    result <- binded_df %>% dplyr::count(type, name = "count")
     result
     
 }
@@ -284,12 +284,12 @@ github_count_events_bydate <- function(range, max_event_num, owner = "", repo = 
     binded_df <- github_lastn_events_df(range,max_event_num,owner,repo,organization,username,token)
     # wrangling data (add date column and filter data by type)
     if (event_type == "all") {
-        binded_df <- binded_df |> dplyr::mutate(date = lubridate::ymd(as.POSIXlt(created_at)))
+        binded_df <- binded_df %>% dplyr::mutate(date = lubridate::ymd(as.POSIXlt(created_at)))
     } else {
-        binded_df <- binded_df |> dplyr::filter(type == event_type) |> dplyr::mutate(date = lubridate::ymd(as.POSIXlt(created_at)))
+        binded_df <- binded_df %>% dplyr::filter(type == event_type) %>% dplyr::mutate(date = lubridate::ymd(as.POSIXlt(created_at)))
     }
     # gourp by date and count records for each date
-    counted_df <- binded_df |> dplyr::count(date, name = "count")
+    counted_df <- binded_df %>% dplyr::count(date, name = "count")
     
     if (return_type == "plot") {
         # plot line chart, because it has better visualization.
@@ -325,13 +325,13 @@ github_count_events_byweekday <- function(range, max_event_num, owner = "", repo
     
     # wrangling data (add weekdays column and filter data by type)
     if (event_type == "all") {
-        binded_df <- binded_df |> dplyr::mutate(weekdays = lubridate::wday(lubridate::ymd(as.POSIXlt(created_at)),label=TRUE))
+        binded_df <- binded_df %>% dplyr::mutate(weekdays = lubridate::wday(lubridate::ymd(as.POSIXlt(created_at)),label=TRUE))
     } else {
-        binded_df <- binded_df |> dplyr::filter(type == event_type) |> dplyr::mutate(weekdays = lubridate::wday(lubridate::ymd(as.POSIXlt(created_at)),label=TRUE))
+        binded_df <- binded_df %>% dplyr::filter(type == event_type) %>% dplyr::mutate(weekdays = lubridate::wday(lubridate::ymd(as.POSIXlt(created_at)),label=TRUE))
     }
     
     # gourp by weekdays and count records for each weekdays
-    counted_df <- binded_df |> dplyr::count(weekdays, name = "count")
+    counted_df <- binded_df %>% dplyr::count(weekdays, name = "count")
     
     if (return_type == "plot") {
         # plot bar chart, because it has better visualization
