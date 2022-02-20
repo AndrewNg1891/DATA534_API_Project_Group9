@@ -1,6 +1,6 @@
 # wrappedgithubactivityapi
 
-[![R-CI-check](https://github.com/AndrewNg1891/DATA534_API_Project_Group9/actions/workflows/R-CI-check.yaml/badge.svg?branch=CI_testing)](https://github.com/AndrewNg1891/DATA534_API_Project_Group9/actions/workflows/R-CI-check.yaml)
+[![R-CI-check](https://github.com/AndrewNg1891/DATA534_API_Project_Group9/actions/workflows/R-CI-check.yaml/badge.svg)](https://github.com/AndrewNg1891/DATA534_API_Project_Group9/actions/workflows/R-CI-check.yaml)
 
 ## Overview
 
