@@ -1,0 +1,19 @@
+---
+title: "TingwenNotebook"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Feb.12 Meeting with team:
+During the meeting, we went over the project requirements and  distributed work load based on personal skills and interest.
+Feb.14 Meeting with team:
+During the meeting, we discussed our API and functions in order to design our package.
+Feb.16 work on the unit test code (commit:5136e987cb21be504ba42457d5cc0b17434c3baf)
+Feb.17 work on the unit test code (commit:5136e987cb21be504ba42457d5cc0b17434c3baf)
+Feb.18 work on the unit test code (commit:16b9c58f144d95d536eee3d3d9d24130f1f08028)
+Feb.19 finish the unit test code and proofread vignettes and readme file (commit:5136e987cb21be504ba42457d5cc0b17434c3baf)
+Feb.20 finalize project meeting
