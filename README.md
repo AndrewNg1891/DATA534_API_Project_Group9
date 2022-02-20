@@ -65,4 +65,4 @@ The function can be used to get rate limit information
 
     github_lastn_events_df("repository",15,owner="AndrewNg1891",repo="DATA534_API_Project_Group9")
 
-For more usage example, please see `\vignettes\Introduction.Rmd`
+For more usage example, please see `Introduction.html` or `\vignettes\Introduction.Rmd`
