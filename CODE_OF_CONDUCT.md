@@ -2,8 +2,8 @@
 
 ## Participation
 
-1. Welcome all members to participate in all aspects of group work, as much as they can, it could be based on their strengths or not.
-2. All sort of positive contributions to group activities are highly appreciated regardless of the person’s strength, background, race.
+1. Welcome all members to participate in all aspects of group work as much as they can based on their various strengths.
+2. All sorts of positive contributions to group activities are highly appreciated regardless of the person’s strengths, background, race.
 3. Diverse life experiences and individual abilities are acknowledged and valued, thereby promoting diversity, involvement, and expertise while maximising productivity and efficiency.
 4. Members of the group are encouraged to be eager and professional in their participation.
 5. Personal growth and skill development are aided by acceptance of one's own areas for improvement.
