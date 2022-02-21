@@ -8,10 +8,6 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-multiple days
-what was done, how it related to overall group goals?
-link to git commits
-explain the development decisions where relevant
 
 ## 2022-02-12
 
