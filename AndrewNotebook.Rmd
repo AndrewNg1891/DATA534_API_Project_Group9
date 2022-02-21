@@ -1,0 +1,57 @@
+---
+title: "API Project Logs"
+author: "Andrew Nguyen"
+date: "2/20/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+multiple days
+what was done, how it related to overall group goals?
+link to git commits
+explain the development decisions where relevant
+
+## 2022-02-12
+
+1. Having initial meeting with all group members, having a look at all project's requirements and discuss what we need to do in our project. This is essential for the whole group because we could have an overview about everything we need to do in this project.
+2. We decided to split the project into 3 major tasks: Bowen will work on initial and the development package. Tingwen will work on unit testing side of the project. I will work on project CI and documentations. We made this decisions because firstly we voluntarily agreed with this suggestion from Tingwen. Secondly, we based on each member's strength and this seems a good structure for our team, and we are all happy with it.
+3. We also created our group project's GitHub repository as an initialization for the project. GitHub link: [commit 58b0b2d](https://github.com/AndrewNg1891/DATA534_API_Project_Group9/commit/58b0b2d51bd0c1c335da13c4abb0dc1089b22f80)
+4. We decided to give it one more day to think about which specific API we would choose for our project and meet back on Monday February 14, 2022. We made this decision because we thought it's really critical to choose a good API that we could manage it well for a short-term project.
+5. We had a few questions that need to clarify with the TA and prof. based on the instructions. Texted TA and emailed the professor the same day and waiting for the response.
+
+## 2022-02-13
+
+1. Doing self-researching on the internet to brainstorm about which API should be chosen for the group as best. While looking at the examples given in the instructions, I would prefer choosing BC Law API because this seems a very interesting topic for me. However, this project would take a longer timeline than our project's timeline permitted in my opinion. I would wait to discuss with my group in the meeting next day. This helped me to get my mind prepared for which aspects in the project would be better suit with my group in our discussion.
+2. Started drafting CONTRIBUTING, CODE_OF_CONDUCT.
+      
+## 2022-02-14
+
+1. Having the second meeting with the team. We decided to choose GitHub Activity API because this seems to give us a reasonable timeline for commitment. As well, we found our interest in this together, so that when we retrieved the data from the API, we could pull out some useful insights from it.
+2. An appointment was set for Wednesday Feb 16, 2022 with the Professor because we were still unclear about Vignette and submission part of the project.
+
+## 2022-02-15
+
+Doing self-research to gather more information for CONTRIBUTING, CODE_OF_CONDUCT and LICENSE because I wanted to make sure to that I understood correctly what I needed to do for these parts. At the same time, I was watching videos and search for what we needed to do for CI testing. This step was necessary to help me reviewing what I had been thinking was good so far.
+  
+  
+## 2022-02-16
+
+Having a third meeting the third meeting with the Professor, and we were able to confirm with the professor about Vignette part that we don't have to make a document for that, we just need to follow the coding practice guidelines. We also clarified with the Professor about submission part. This was really helpful for us because it was clearer to us about what we need to do for the project.
+
+## 2022-12-18
+
+Finished documentations and pushed to GitHub in feature branch.
+([commit 58b0b2d](https://github.com/AndrewNg1891/DATA534_API_Project_Group9/commit/5126cf3d59cd9c85a86d6c7b9d214fd44d05b860))
+([commit 5126cf3](https://github.com/AndrewNg1891/DATA534_API_Project_Group9/commit/fdd6decb46e01351de145a249220368674393040))
+
+## 2022-12-19
+
+Starting CI testing implementation on a feature branch. This initiated the first implementation for the code and unit tests we had done so far.
+([cea7c4d](https://github.com/AndrewNg1891/DATA534_API_Project_Group9/commit/31d9f2b13950df378844c5941d03cf47ffdcc5df))
+
+## 2020-12-20
+
+Finished CI testing on main branch. This recognized that we have been doing good for our coding and unittest set.
+([44ca83f + bc32d4f](https://github.com/AndrewNg1891/DATA534_API_Project_Group9/commit/7b14d3bec0b07db1b71892af8be7463586ab4d5c))
