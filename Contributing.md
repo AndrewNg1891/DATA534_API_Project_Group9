@@ -8,15 +8,15 @@ The GitHub Activity Listing API
 * Unit Testing by Tingwen
 * Continuous Integration and Documentation by Andrew
 
-## Git Workflow Practices
+# Git Workflow Practices
 
 All team members agree to the Feature Branch workflow, and the following conventions (master branch protection):
-1. When each member starts building on a new feature, they will create their new branch with relevant name apart from main branch.
-2. Any time a member would like to add, commit, and push their code. They should do that for the local and remote of the feature branch first.
-3. After the remote feature branch had been pushed successfully, the member should send a pull request for merging their updated feature to the main branch (if it was approved by other group’s members.)
-4. When conflicts happened during merging, the team member should attempt checking their work to solve within their reasonable time first. If it could not be resolved, they should seek for help from other members on time to avoid any delays.
+1. When each member starts building a new feature, they will create a new branch with a relevant name but apart from the main branch.
+2. Any time a member would like to add, commit, and push their code, they should do that for the local and remote of the feature branch first.
+3. After the remote feature branch has been pushed successfully, the member should send a pull request for merging their updated feature to the main branch assuming it was approved by other group members.
+4. When conflicts happen during merging, the team member should attempt to check their work to solve within a reasonable time frame. If it could not be resolved, they should seek help from other members in order to avoid delays.
 
-## Are you interested to contribute to our project?
+# Are you interested to contribute to our project?
 
 Our package is used to help users to check login activities in certain API such as GitHub as well as serving  higher level purposes such as analysis, for example, helping users allocate appropriate resources for maintenance. Recognizing that for the community, your contributions to us are very important.
 If you would like to contribute to a project and make it better, your help is very welcome. Contributing is also a great way to learn more. Please feel free to send us a good, clean pull request, we highly appreciate it. Please note that we use R language, so please follow [tidyverse style guidelines](https://style.tidyverse.org/).
@@ -36,6 +36,6 @@ If you would like to contribute to a project and make it better, your help is ve
 - From your fork open a pull request in the correct branch. Target the project's `develop` branch if there is one, else go for `master`!
 - Once the pull request is approved and merged you can pull the changes from `upstream` to your local repo and delete your extra branch(es).
 
-### You have a big thanks from our team!
+## You have a big thanks from our team!
 
 
